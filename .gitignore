@@ -1,0 +1,8 @@
+# Original source PDFs — large, and superseded by the extracted/compressed
+# images in assets/work/ that the site actually uses
+assets/case-studies/
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db
+.claude/

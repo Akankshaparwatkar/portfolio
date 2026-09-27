@@ -473,7 +473,7 @@ section{ position:relative; }
   width:100%;
   overflow:hidden;
   background:var(--blush);
-  padding:20px 0;
+  padding:12px 0;
 }
 .ticker-track{
   display:flex;
@@ -490,14 +490,18 @@ section{ position:relative; }
   font-family:var(--font-body);
   font-weight:700;
   text-transform:uppercase;
-  font-size:clamp(14px, 1.6vw, 19px);
+  font-size:clamp(10px, 1vw, 13px);
   letter-spacing:.04em;
   color:var(--ink);
-  padding:0 16px;
+  padding:0 10px;
 }
 .ticker-sep{
-  color:var(--ink);
-  font-size:15px;
+  display:inline-block;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:var(--ink);
+  opacity:.5;
 }
 @keyframes ticker-scroll{
   from{ transform:translateX(0); }

@@ -602,6 +602,7 @@ section{ position:relative; }
   border-radius:28px;
   overflow:hidden;
   box-shadow:0 30px 90px rgba(0,0,0,.12), inset 0 0 0 1px rgba(18,18,18,.06);
+  touch-action:pan-y;
 }
 .gallery-viewport{
   position:absolute; inset:0;

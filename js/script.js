@@ -336,13 +336,29 @@
     // touch swipe with a directional threshold
     let touchStartX = 0;
     let touchStartY = 0;
+    let touchIsHorizontal = false;
     galleryFrame.addEventListener(
       "touchstart",
       (e) => {
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
+        touchIsHorizontal = false;
       },
       { passive: true }
+    );
+    // Once a drag is clearly horizontal, claim it so the browser doesn't
+    // treat it as its own edge-swipe back/forward navigation gesture.
+    galleryFrame.addEventListener(
+      "touchmove",
+      (e) => {
+        const dx = e.touches[0].clientX - touchStartX;
+        const dy = e.touches[0].clientY - touchStartY;
+        if (!touchIsHorizontal && Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+          touchIsHorizontal = true;
+        }
+        if (touchIsHorizontal) e.preventDefault();
+      },
+      { passive: false }
     );
     galleryFrame.addEventListener(
       "touchend",

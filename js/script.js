@@ -1,6 +1,6 @@
 /**
  * Akanksha Parwatkar — Portfolio
- * Navigation, parallax, scroll reveals, the scroll-driven swim transition,
+ * Navigation, parallax, scroll reveals, the scroll-driven statement reveal,
  * and project poster interactions.
  */
 (() => {
@@ -176,55 +176,22 @@
     }
   }
 
-  /* ============ SCROLL-DRIVEN SWIM TRANSITION ============ */
-  /* Vanilla scroll + rAF, deliberately not GSAP ScrollTrigger — a plain
-     scroll listener is the most robust way to guarantee 1:1 scroll-linked
-     motion with no dependency on any animation library's internal ticker. */
-  const swimStrip = document.getElementById("swimStrip");
-  const swimTrack = document.getElementById("swimTrack");
-  const swimSwimmer = document.getElementById("swimSwimmer");
-
-  if (swimStrip && swimTrack && swimSwimmer) {
-    let targetX = 0;
-    let currentX = 0;
-    let ticking = false;
-
-    function swimProgress() {
-      const rect = swimStrip.getBoundingClientRect();
+  /* ============ STATEMENT — words darken as you scroll ============ */
+  const statementText = document.getElementById("statementText");
+  if (statementText) {
+    const words = statementText.textContent.trim().split(/\s+/);
+    statementText.innerHTML = words.map((w) => `<span class="w">${w}</span>`).join(" ");
+    const spans = Array.from(statementText.querySelectorAll(".w"));
+    function paintStatement() {
+      const rect = statementText.getBoundingClientRect();
       const vh = window.innerHeight;
-      const total = vh + rect.height;
-      let p = (vh - rect.top) / total;
-      return Math.max(0, Math.min(1, p));
+      const p = prefersReducedMotion ? 1 : Math.max(0, Math.min(1, (vh * 0.85 - rect.top) / (vh * 0.45 + rect.height * 0.4)));
+      const lit = Math.round(p * spans.length);
+      spans.forEach((s, i) => s.classList.toggle("on", i < lit));
     }
-
-    function computeTarget() {
-      const maxX = Math.max(0, swimTrack.clientWidth - swimSwimmer.clientWidth);
-      targetX = swimProgress() * maxX;
-    }
-
-    function tick() {
-      currentX += (targetX - currentX) * (prefersReducedMotion ? 1 : 0.18);
-      swimSwimmer.style.transform = `translate(${currentX}px, -50%)`;
-      if (Math.abs(targetX - currentX) > 0.3) {
-        requestAnimationFrame(tick);
-      } else {
-        ticking = false;
-      }
-    }
-
-    function onScrollOrResize() {
-      computeTarget();
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(tick);
-      }
-    }
-
-    window.addEventListener("scroll", onScrollOrResize, { passive: true });
-    window.addEventListener("resize", onScrollOrResize);
-    computeTarget();
-    currentX = targetX;
-    swimSwimmer.style.transform = `translate(${currentX}px, -50%)`;
+    window.addEventListener("scroll", paintStatement, { passive: true });
+    window.addEventListener("resize", paintStatement);
+    paintStatement();
   }
 
   /* ============ ARTWORKS GALLERY — horizontal slider ============ */

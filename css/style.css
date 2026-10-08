@@ -292,34 +292,27 @@ section{ position:relative; }
   .preloader-logo{ animation:none; opacity:1; }
 }
 
-/* =========================== SWIM TRANSITION =========================== */
-.swim-strip{
+/* =========================== STATEMENT =========================== */
+.statement{
   background:var(--bg);
-  padding:100px 0 30px;
-  display:flex; justify-content:center;
-  overflow:hidden;
+  padding:150px var(--edge) 130px;
 }
-.swim-track{
-  position:relative;
-  width:100%;
-  height:clamp(70px, 15vh, 130px);
-  overflow:hidden;
+.statement-inner{ max-width:1000px; margin:0 auto; }
+.statement-label{
+  display:block; margin-bottom:28px;
+  font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:rgba(18,18,18,.45);
 }
-.swim-lane{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover; object-position:center;
-  display:block;
+.statement-text{
+  margin:0;
+  font-weight:600;
+  font-size:clamp(30px, 4.6vw, 62px);
+  line-height:1.14; letter-spacing:-.025em;
 }
-.swim-swimmer{
-  position:absolute; top:50%; left:0;
-  height:70%; width:auto;
-  transform:translate(0, -50%);
-  will-change:transform;
-}
+.statement-text .w{ color:rgba(18,18,18,.16); transition:color .35s ease; }
+.statement-text .w.on{ color:var(--ink); }
 @media (max-width:900px){
-  .swim-strip{ padding:70px 0 40px; }
-  .swim-track{ height:clamp(50px, 11vh, 90px); }
+  .statement{ padding:100px var(--edge) 90px; }
 }
 
 /* =========================== WORK ===================== */

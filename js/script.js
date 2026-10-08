@@ -121,19 +121,6 @@
         scrollTrigger: { trigger: ".work-footer", start: "top 92%" },
       });
 
-      // Posters cascade in
-      gsap.utils.toArray(".poster").forEach((poster, i) => {
-        gsap.from(poster, {
-          y: 90,
-          opacity: 0,
-          rotate: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          delay: i * 0.06,
-          scrollTrigger: { trigger: ".poster-stack", start: "top 78%" },
-        });
-      });
-
       // About scraps
       gsap.utils.toArray(".about-visual .scrap").forEach((el, i) => {
         gsap.from(el, {

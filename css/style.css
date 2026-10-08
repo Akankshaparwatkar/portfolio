@@ -293,7 +293,7 @@ section{ position:relative; }
 }
 
 /* =========================== PATTERN STRIP =========================== */
-.pattern-wrap{ background:var(--bg); padding:90px 0 80px; }
+.pattern-wrap{ background:var(--bg); padding:90px 0 0; }
 .pattern-strip{
   height:44px; width:100%;
   background:
@@ -312,7 +312,7 @@ section{ position:relative; }
   .pattern-strip{ animation:none; }
 }
 @media (max-width:900px){
-  .pattern-wrap{ padding:60px 0 50px; }
+  .pattern-wrap{ padding:60px 0 0; }
   .pattern-strip{ height:34px; }
 }
 

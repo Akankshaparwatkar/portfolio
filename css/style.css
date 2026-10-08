@@ -354,7 +354,7 @@ section{ position:relative; }
 }
 /* Project cards: stacking scroll. Each card pins near the top and the next one slides over it. */
 .poster-stack{
-  max-width:1000px; margin:64px auto 0;
+  max-width:840px; margin:64px auto 0;
   display:flex; flex-direction:column; gap:44px;
 }
 .poster{
@@ -385,7 +385,7 @@ section{ position:relative; }
   font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.6;
 }
 .poster-desc{
-  max-width:380px; margin:4px 0 0;
+  max-width:400px; margin:4px 0 0;
   font-size:15px; line-height:1.6; font-weight:500; color:rgba(18,18,18,.75);
 }
 .poster-frame{

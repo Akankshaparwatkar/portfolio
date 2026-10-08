@@ -1,6 +1,6 @@
 /**
  * Akanksha Parwatkar — Portfolio
- * Navigation, parallax, scroll reveals, the scroll-driven statement reveal,
+ * Navigation, parallax, scroll reveals, 
  * and project poster interactions.
  */
 (() => {
@@ -174,24 +174,6 @@
         });
       }
     }
-  }
-
-  /* ============ STATEMENT — words darken as you scroll ============ */
-  const statementText = document.getElementById("statementText");
-  if (statementText) {
-    const words = statementText.textContent.trim().split(/\s+/);
-    statementText.innerHTML = words.map((w) => `<span class="w">${w}</span>`).join(" ");
-    const spans = Array.from(statementText.querySelectorAll(".w"));
-    function paintStatement() {
-      const rect = statementText.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const p = prefersReducedMotion ? 1 : Math.max(0, Math.min(1, (vh * 0.85 - rect.top) / (vh * 0.45 + rect.height * 0.4)));
-      const lit = Math.round(p * spans.length);
-      spans.forEach((s, i) => s.classList.toggle("on", i < lit));
-    }
-    window.addEventListener("scroll", paintStatement, { passive: true });
-    window.addEventListener("resize", paintStatement);
-    paintStatement();
   }
 
   /* ============ ARTWORKS GALLERY — horizontal slider ============ */

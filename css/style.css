@@ -292,27 +292,28 @@ section{ position:relative; }
   .preloader-logo{ animation:none; opacity:1; }
 }
 
-/* =========================== STATEMENT =========================== */
-.statement{
-  background:var(--bg);
-  padding:150px var(--edge) 130px;
+/* =========================== PATTERN STRIP =========================== */
+.pattern-wrap{ background:var(--bg); padding:90px 0 80px; }
+.pattern-strip{
+  height:44px; width:100%;
+  background:
+    repeating-linear-gradient(-45deg, var(--ink) 0 2px, transparent 2px 14px),
+    var(--blush);
+  border-top:1.5px solid var(--ink);
+  border-bottom:1.5px solid var(--ink);
+  background-size:auto, auto;
+  animation:patternSlide 24s linear infinite;
 }
-.statement-inner{ max-width:1000px; margin:0 auto; }
-.statement-label{
-  display:block; margin-bottom:28px;
-  font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-  color:rgba(18,18,18,.45);
+@keyframes patternSlide{
+  from{ background-position:0 0, 0 0; }
+  to{ background-position:19.8px 0, 0 0; }
 }
-.statement-text{
-  margin:0;
-  font-weight:600;
-  font-size:clamp(30px, 4.6vw, 62px);
-  line-height:1.14; letter-spacing:-.025em;
+@media (prefers-reduced-motion: reduce){
+  .pattern-strip{ animation:none; }
 }
-.statement-text .w{ color:rgba(18,18,18,.16); transition:color .35s ease; }
-.statement-text .w.on{ color:var(--ink); }
 @media (max-width:900px){
-  .statement{ padding:100px var(--edge) 90px; }
+  .pattern-wrap{ padding:60px 0 50px; }
+  .pattern-strip{ height:34px; }
 }
 
 /* =========================== WORK ===================== */

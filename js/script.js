@@ -261,6 +261,9 @@
         const primary = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
         if (Math.abs(primary) < 8) return;
         const goingNext = primary > 0;
+        const horizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+        // swallow sideways swipes so the browser never turns them into back/forward navigation
+        if (horizontal) e.preventDefault();
         const atBoundary = (goingNext && currentSlide === slideCount - 1) || (!goingNext && currentSlide === 0);
         if (atBoundary) return;
         e.preventDefault();

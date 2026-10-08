@@ -36,7 +36,8 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; overscroll-behavior-x:none; }
+body{ overscroll-behavior-x:none; }
 
 body{
   margin:0;
@@ -541,6 +542,7 @@ section{ position:relative; }
   overflow:hidden;
   box-shadow:0 30px 90px rgba(0,0,0,.12), inset 0 0 0 1px rgba(18,18,18,.06);
   touch-action:pan-y;
+  overscroll-behavior:contain;
 }
 .gallery-viewport{
   position:absolute; inset:0;

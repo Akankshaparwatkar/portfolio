@@ -176,6 +176,19 @@
     }
   }
 
+  /* ============ OTHER PROJECTS toggle ============ */
+  const otherToggle = document.getElementById("otherToggle");
+  const otherProjects = document.getElementById("otherProjects");
+  if (otherToggle && otherProjects) {
+    otherToggle.addEventListener("click", () => {
+      const open = otherToggle.getAttribute("aria-expanded") !== "true";
+      otherToggle.setAttribute("aria-expanded", String(open));
+      otherProjects.classList.toggle("open", open);
+      otherProjects.setAttribute("aria-hidden", String(!open));
+      otherProjects.toggleAttribute("inert", !open);
+    });
+  }
+
   /* ============ ARTWORKS GALLERY — horizontal slider ============ */
   /* One category = one full-width slide inside a framed, clipped track.
      Text + cards belong to the slide and move together via translateX.

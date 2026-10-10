@@ -356,7 +356,7 @@ section{ position:relative; }
   position:sticky;
   top:calc(100px + var(--i, 0) * 22px);
   height:clamp(330px, 50vh, 400px);
-  display:grid; grid-template-columns:1fr auto; align-items:stretch; gap:32px;
+  display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:stretch; gap:32px;
   padding:22px 22px 22px 44px;
   background:var(--card, #f4efe6);
   color:var(--ink);
@@ -384,7 +384,7 @@ section{ position:relative; }
   font-size:15px; line-height:1.6; font-weight:500; color:rgba(18,18,18,.75);
 }
 .poster-frame{
-  display:block; height:100%; aspect-ratio:2/3; overflow:hidden;
+  display:block; height:100%; aspect-ratio:2/3; overflow:hidden; justify-self:end;
   border-radius:18px;
   box-shadow:0 18px 40px rgba(0,0,0,.18);
 }
@@ -823,7 +823,7 @@ section{ position:relative; }
     grid-template-columns:1fr; gap:20px; padding:24px 22px 22px;
   }
   .poster-title{ font-size:clamp(38px, 11vw, 60px); }
-  .poster-frame{ height:auto; aspect-ratio:4/3; }
+  .poster-frame{ height:auto; width:100%; justify-self:stretch; aspect-ratio:4/3; }
   .poster-cover-img{ object-position:top; }
 
   .about-grid{ grid-template-columns:1fr; }
